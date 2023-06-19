@@ -1,4 +1,5 @@
 const arr = [1, 5, 7, 20, 30, 40, 50, 1, 60, 70, 42];
+const nums = [0, 2, 3, 7, 8, 0, 95, 0, 15];
 const Workers = {
     name: "Ahmed",
     age: 21,
@@ -126,18 +127,18 @@ function product(accumulator ,num, i, arr) {
 }
 
 
-console.log(myEach(arr, consoleLog));
-console.log(myMap(arr, square));
-console.log(myMap(arr, double));
-console.log(myFilter(arr, even));
-console.log(myFilter(arr, odd));
-console.log(myEvery(arr, lessThan100));
-console.log(myReduce(arr, sum));
-console.log(myReduce(arr, product));
-console.log(myIncludes(arr, 100));
-console.log(myIndexOf(arr, 1));
-console.log(myIndexOf(arr, 50));
-console.log(myUnshift(arr, 1));
+// console.log(myEach(arr, consoleLog));
+// console.log(myMap(arr, square));
+// console.log(myMap(arr, double));
+// console.log(myFilter(arr, even));
+// console.log(myFilter(arr, odd));
+// console.log(myEvery(arr, lessThan100));
+// console.log(myReduce(arr, sum));
+// console.log(myReduce(arr, product));
+// console.log(myIncludes(arr, 100));
+// console.log(myIndexOf(arr, 1));
+// console.log(myIndexOf(arr, 50));
+// console.log(myUnshift(arr, 1));
 
 
 function grabKeys(obj){
@@ -159,5 +160,142 @@ function grabValues(obj){
     return keys;
 }
 
-console.log(grabKeys(Workers));
-console.log(grabValues(Workers));
+
+function moveZeros (nums) {
+    let i = 0; // Pointer for non-zero elements
+    let j = 0; // Pointer for iterating through the array
+
+  while (j < nums.length) {
+    if (nums[j] !== 0) {
+      // Swap non-zero element with the current i position
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+      i++;
+    }
+    j++;
+  }
+}
+function range(start, end, step = 1) {
+    let arr = [];
+  
+    if (start <= end && step > 0) {
+      for (let i = start; i <= end; i += step) {
+        arr.push(i);
+      }
+    } else if (start >= end && step < 0) {
+      for (let i = start; i >= end; i += step) {
+        arr.push(i);
+      }
+    }
+  
+    return arr;
+  }
+  
+  function sum(arr) {
+    let total = 0;
+    for (let num of arr) {
+      total += num;
+    }
+    return total;
+  }
+  
+
+  function reverseArray(arr) {
+    let reversed = [];
+    for (let i = arr.length - 1; i >= 0; i--) {
+      reversed.push(arr[i]);
+    }
+    return reversed;
+  }
+  
+  function reverseArrayInPlace(arr) {
+    let left = 0;
+    let right = arr.length - 1;
+    while (left < right) {
+      let temp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = temp;
+      left++;
+      right--;
+    }
+  }
+  
+  function arrayToList(array) {
+    let list = null;
+    for (let i = array.length - 1; i >= 0; i--) {
+      list = { value: array[i], rest: list };
+    }
+    return list;
+  }
+  
+  function listToArray(list) {
+    let array = [];
+    let node = list;
+    while (node !== null) {
+      array.push(node.value);
+      node = node.rest;
+    }
+    return array;
+  }
+  
+  function prepend(value, list) {
+    return { value: value, rest: list };
+  }
+  
+  function nth(list, index) {
+    if (list === null) {
+      return undefined;
+    } else if (index === 0) {
+      return list.value;
+    } else {
+      return nth(list.rest, index - 1);
+    }
+  }
+  
+
+  function deepEqual(a, b) {
+    if (a === b) {
+      return true;
+    }
+  
+    if (typeof a !== "object" || a === null || typeof b !== "object" || b === null) {
+      return false;
+    }
+  
+    let keysA = Object.keys(a);
+    let keysB = Object.keys(b);
+  
+    if (keysA.length !== keysB.length) {
+      return false;
+    }
+  
+    for (let key of keysA) {
+      if (!keysB.includes(key) || !deepEqual(a[key], b[key])) {
+        return false;
+      }
+    }
+  
+    return true;
+  }
+  
+  let obj = { here: { is: "an" }, object: 2 };
+  
+//   console.log(deepEqual(obj, obj));  
+//   console.log(deepEqual(obj, { here: 1, object: 2 }));  
+//   console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
+  
+//   console.log(arrayToList([10, 20]));  
+//   console.log(listToArray(arrayToList([10, 20, 30])));  
+//   console.log(prepend(10, prepend(20, null)));  
+//   console.log(nth(arrayToList([10, 20, 30]), 1));
+  
+  //console.log(reverseArray(["A", "B", "C"])); 
+//   let array = [1, 2, 3, 4, 5];
+//   reverseArrayInPlace(array);
+//   console.log(array);
+  
+// console.log(grabKeys(Workers));
+// console.log(grabValues(Workers));
+// console.log(nums);
+// moveZeros(nums);
+// console.log(nums);
+//console.log(sum(range(0, 100, 10)));
